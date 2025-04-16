@@ -36,6 +36,13 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === "new-release" ? (
+            <Ribbon style={{ "--bg-color": COLORS.secondary }}>
+              Just Released!
+            </Ribbon>
+          ) : variant === "on-sale" ? (
+            <Ribbon style={{ "--bg-color": COLORS.primary }}>Sale</Ribbon>
+          ) : undefined}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
@@ -99,6 +106,19 @@ const ColorInfo = styled.p`
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
+`;
+
+const Ribbon = styled.div`
+  top: 12px;
+  right: -4px;
+  position: absolute;
+  color: ${COLORS.white};
+  padding: 8px 12px;
+  background-color: var(--bg-color);
+  font-size: ${14 / 16}rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  border-radius: 2px;
 `;
 
 export default ShoeCard;
